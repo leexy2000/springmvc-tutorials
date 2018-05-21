@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="parent" abstract="true">
+		<property name="address">
+			<props>
+				<prop key="administrator">administrator@spring.com</prop>
+				<prop key="support">support@spring.com</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="address" class="org.tutorialspoint.collections.MailAddress" parent="parent">
+		<property name="address">
+			<!-- the merge is specified on the child collection definition -->
+			<props merge="true">
+				<prop key="sales">sales@spring.com</prop>
+				<prop key="support">support@spring.co.uk</prop>
+			</props>
+		</property>
+	</bean>
+
+
+
+</beans>
